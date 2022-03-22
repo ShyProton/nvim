@@ -40,13 +40,28 @@ packer.init {
 
 -- Install your plugins here
 return packer.startup(function(use)
-  -- My plugins here
+  -- Packer
   use "wbthomason/packer.nvim" -- Have packer manage itself
+
+  -- Dependencies
   use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
   use "nvim-lua/plenary.nvim" -- Useful lua functions used by lots of plugins
+
+  -- Utilities
   use "windwp/nvim-autopairs" -- Automatically close braces, brackets, etc.
-  use "tanvirtin/monokai.nvim" -- Monokai color theme
   use "numToStr/Comment.nvim" -- Commenting shortcuts
+  use "lewis6991/gitsigns.nvim" -- Git features
+  use "kyazdani42/nvim-tree.lua" -- File navigation
+  use "akinsho/toggleterm.nvim" -- Togglable terminal
+
+  -- Buffers
+  use "akinsho/bufferline.nvim" -- Better buffers
+  use "moll/vim-bbye" -- Closing buffers without messiness
+
+  -- Aesthetics
+  -- use "tanvirtin/monokai.nvim" -- Monokai color theme
+  use "navarasu/onedark.nvim" -- Onedark color theme
+  use "kyazdani42/nvim-web-devicons" -- Dev icons in Neovim
 
   -- cmp plugins
   use "hrsh7th/nvim-cmp" -- Completion plugin
