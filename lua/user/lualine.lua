@@ -24,7 +24,7 @@ lualine.setup({
 		theme = "onedark",
 		component_separators = { left = "", right = "" },
 		section_separators = { left = "", right = "" },
-		disabled_filetypes = { "toggleterm", "dashboard", "NvimTree", "Outline" },
+		disabled_filetypes = { "toggleterm", "dashboard", "NvimTree", "Outline", "alpha" },
 		always_divide_middle = true,
 	},
 	sections = {

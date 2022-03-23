@@ -53,6 +53,8 @@ return packer.startup(function(use)
   use "lewis6991/gitsigns.nvim" -- Git features
   use "kyazdani42/nvim-tree.lua" -- File navigation
   use "akinsho/toggleterm.nvim" -- Togglable terminal
+  use "lewis6991/impatient.nvim" -- Improves startup time
+  use "ahmedkhalf/project.nvim" -- Project selection
 
   -- Buffers
   use "akinsho/bufferline.nvim" -- Better buffers
@@ -63,6 +65,8 @@ return packer.startup(function(use)
   use "navarasu/onedark.nvim" -- Onedark color theme
   use "kyazdani42/nvim-web-devicons" -- Dev icons in Neovim
   use "nvim-lualine/lualine.nvim" -- Improved status line
+  use "lukas-reineke/indent-blankline.nvim" -- Indentation lines
+  use "goolord/alpha-nvim" -- Neovim startup screen
 
   -- cmp plugins
   use "hrsh7th/nvim-cmp" -- Completion plugin
@@ -75,7 +79,7 @@ return packer.startup(function(use)
 
   -- Snippets
   use "L3MON4D3/LuaSnip" -- snippet engine
-  use "rafamadriz/friendly-snippets"
+  use "rafamadriz/friendly-snippets" -- collection of common snippets in many languages
 
   -- LSP
   use "neovim/nvim-lspconfig" -- enable LSP
