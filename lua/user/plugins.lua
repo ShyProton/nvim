@@ -55,6 +55,8 @@ return packer.startup(function(use)
   use "akinsho/toggleterm.nvim" -- Togglable terminal
   use "lewis6991/impatient.nvim" -- Improves startup time
   use "ahmedkhalf/project.nvim" -- Project selection
+  use "nathom/filetype.nvim" -- Improves startup time
+  use "antoinemadec/FixCursorHold.nvim" -- Fixes cursorhold performance
 
   -- Buffers
   use "akinsho/bufferline.nvim" -- Better buffers
@@ -85,6 +87,7 @@ return packer.startup(function(use)
   use "neovim/nvim-lspconfig" -- enable LSP
   use "williamboman/nvim-lsp-installer" -- simple to use language server installer
   use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
+  use "tami5/lspsaga.nvim" -- LSP UI Improvements
 
   -- Telescope
   use "nvim-telescope/telescope.nvim"
@@ -95,6 +98,12 @@ return packer.startup(function(use)
     "nvim-treesitter/nvim-treesitter", -- improved syntax highlighting
     run = ":TSUpdate",
   }
+
+  -- Languages --
+  -- Flutter
+  use "akinsho/flutter-tools.nvim"
+  use "Nash0x7E2/awesome-flutter-snippets";
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then

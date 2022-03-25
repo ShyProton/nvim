@@ -75,4 +75,7 @@ keymap("n", "<C-]>", ":ToggleTerm direction=vertical size=95<cr>", opts)
 keymap("n", "<C-[>", ":ToggleTerm direction=float<cr>", opts)
 
 -- Formatting
-keymap("n", "<leader>f", ":Format<cr>", opts)
+-- keymap("n", "<leader>f", ":Format<cr>", opts)
+
+-- Flutter
+keymap("n", "<leader>f", ":Telescope flutter commands<CR>", opts)

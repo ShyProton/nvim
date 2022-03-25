@@ -15,5 +15,5 @@ configs.setup {
     disable = {""},
     additional_vim_regex_highlighting = true,
   },
-  indent = {enable = true, disable = {"yaml", "python"}},
+  indent = {enable = true, disable = {"yaml", "python", "dart"}},
 }

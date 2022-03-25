@@ -14,6 +14,6 @@ null_ls.setup {
     diagnostics.flake8,
 
     -- Dart
-    formatting.dart_format,
+    -- formatting.dart_format,
   },
 }
