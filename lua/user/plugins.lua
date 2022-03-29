@@ -70,7 +70,14 @@ return packer.startup(function(use)
   use "lukas-reineke/indent-blankline.nvim" -- Indentation lines
   use "goolord/alpha-nvim" -- Neovim startup screen
 
-  -- cmp plugins
+  -- Completion
+  -- use {
+  --   "ms-jpq/coq_nvim", -- Completion engine
+  --   run = ":COQnow [--shut-up]"
+  -- }
+
+  -- use "ms-jpq/coq.artifacts" -- 9000+ Snippets
+
   use "hrsh7th/nvim-cmp" -- Completion plugin
   use "hrsh7th/cmp-buffer" -- buffer completions
   use "hrsh7th/cmp-path" -- path completions
@@ -88,6 +95,12 @@ return packer.startup(function(use)
   use "williamboman/nvim-lsp-installer" -- simple to use language server installer
   use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
   use "tami5/lspsaga.nvim" -- LSP UI Improvements
+  -- use {
+  --   "j-hui/fidget.nvim",
+  --   config = function ()
+  --     require("fidget").setup{}
+  --   end
+  -- }
 
   -- Telescope
   use "nvim-telescope/telescope.nvim"
@@ -103,6 +116,7 @@ return packer.startup(function(use)
   -- Flutter
   use "akinsho/flutter-tools.nvim"
   use "Nash0x7E2/awesome-flutter-snippets";
+  use "tiagofumo/dart-vim-flutter-layout";
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

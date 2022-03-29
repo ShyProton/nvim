@@ -12,13 +12,17 @@ function M.setup(attach, capabilities)
       capabilities = capabilities,
       color = {
         enabled = true,
-      }
-    },
-    decorations = {
-      statusline = {
-        device = true,
+      },
+      init_options = {
+        suggestFromUnimportedLibraries = false,
       },
     },
+    outline = {
+      auto_open = true,
+    },
+    -- init_options = {
+    --   suggestFromUnimportedLibraries = false,
+    -- },
   }
 end
 

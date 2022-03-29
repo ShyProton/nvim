@@ -60,7 +60,7 @@ local function lsp_highlight_document(client)
 end
 
 local function lsp_keymaps(bufnr)
-  local opts = { noremap = true, silent = true }
+  local opts = { noremap = true, silent = false }
 
   vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>ca", ":Lspsaga code_action<CR>", opts)
   vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>cd", ":Lspsaga show_line_diagnostics<CR>", opts)
@@ -98,13 +98,18 @@ M.on_attach = function(client, bufnr)
     client.resolved_capabilities.document_formatting = false
   end
 
-  client.config.debounce_text_changes = 150
-
   lsp_keymaps(bufnr)
   lsp_highlight_document(client)
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
+
+-- local status_ok, coq_nvim = pcall(require, "coq")
+-- if not status_ok then
+--   return
+-- end
+
+-- M.capabilities = coq_nvim.lsp_ensure_capabilities(capabilities)
 
 local status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
 if not status_ok then
