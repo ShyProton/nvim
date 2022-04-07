@@ -32,9 +32,11 @@ keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
 keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 
 -- Navigate buffers
-keymap("n", "<S-l>", ":bnext<CR>", opts)
-keymap("n", "<S-h>", ":bprevious<CR>", opts)
-keymap("n", "<C-d>", ":Bdelete!<CR>", opts)
+keymap("n", "<S-l>", "<cmd>BufferLineCycleNext<CR>", opts)
+keymap("n", "<S-h>", "<cmd>BufferLineCyclePrev<CR>", opts)
+keymap("n", "<A-l>", "<cmd>BufferLineMoveNext<CR>", opts)
+keymap("n", "<A-h>", "<cmd>BufferLineMovePrev<CR>", opts)
+keymap("n", "<C-x>", "<cmd>Bdelete!<CR>", opts)
 
 -- Insert --
 keymap("i", "<C-c>", "<ESC>", opts)
@@ -51,8 +53,8 @@ keymap("v", "p", '"_dP', opts)
 
 -- Visual Block --
 -- Move text up and down
-keymap("x", "J", ":move '>+1<CR>gv-gv", opts)
-keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
+-- keymap("x", "J", ":move '>+1<CR>gv-gv", opts)
+-- keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
 keymap("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 
@@ -68,14 +70,25 @@ keymap("n", "<C-s>", "<cmd>lua require'telescope.builtin'.find_files(require('te
 keymap("n", "<C-g>", "<cmd>Telescope live_grep<cr>", opts)
 
 -- NvimTree --
-keymap("n", "<leader>e", ":NvimTreeToggle<cr>", opts)
+keymap("n", "<leader>e", "<cmd>NvimTreeToggle<cr>", opts)
 
 -- Terminal --
-keymap("n", "<C-]>", ":ToggleTerm direction=vertical size=95<cr>", opts)
-keymap("n", "<C-[>", ":ToggleTerm direction=float<cr>", opts)
+keymap("n", "<C-]>", "<cmd>ToggleTerm direction=vertical size=95<cr>", opts)
+keymap("n", "<C-[>", "<cmd>ToggleTerm direction=float<cr>", opts)
 
--- Formatting
--- keymap("n", "<leader>f", ":Format<cr>", opts)
+-- Formatting --
+keymap("n", "<leader>\\", "<cmd>Format<cr>", opts)
 
--- Flutter
-keymap("n", "<leader>f", ":Telescope flutter commands<CR>", opts)
+-- Flutter --
+keymap("n", "<leader>ff", "<cmd>Telescope flutter commands<CR>", opts)
+keymap("n", "<leader>fo", "<cmd>FlutterOutlineToggle<CR>", opts)
+keymap("n", "<leader>fr", "<cmd>FlutterRun<CR>", opts)
+keymap("n", "<leader>fR", "<cmd>FlutterRestart<CR>", opts)
+keymap("n", "<leader>fq", "<cmd>FlutterQuit<CR>", opts)
+keymap("n", "<leader>fd", "<cmd>FlutterDetach<CR>", opts)
+
+-- Gitsigns --
+keymap("n", "<leader>hp", "<cmd>Gitsigns preview_hunk<CR>", opts)
+
+-- Trouble --
+keymap("n", "<leader>xx", "<cmd>TroubleToggle<CR>", opts)

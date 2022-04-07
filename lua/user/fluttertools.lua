@@ -17,12 +17,12 @@ function M.setup(attach, capabilities)
         suggestFromUnimportedLibraries = false,
       },
     },
-    outline = {
-      auto_open = true,
+    widget_guides = {
+      enabled = true,
     },
-    -- init_options = {
-    --   suggestFromUnimportedLibraries = false,
-    -- },
+    outline = {
+      auto_open = false,
+    },
   }
 end
 

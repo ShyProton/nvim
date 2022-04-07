@@ -13,7 +13,7 @@ vim.opt.showmode = false
 vim.opt.showtabline = 4
 vim.opt.smartcase = true
 
-vim.opt.smartindent = true
+vim.opt.smartindent = false
 vim.opt.autoindent = true
 
 vim.opt.splitbelow = true
@@ -44,6 +44,7 @@ vim.opt.scrolloff = 8
 vim.opt.sidescrolloff = 8
 vim.opt.guifont = 'monospace:h17'
 
+-- vim.g.dart_style_guide = 2
 -- vim.opt.lsp_log_file = 0
 -- vim.opt.foldmethod = "manual"
 

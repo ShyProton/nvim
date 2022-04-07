@@ -57,27 +57,36 @@ return packer.startup(function(use)
   use "ahmedkhalf/project.nvim" -- Project selection
   use "nathom/filetype.nvim" -- Improves startup time
   use "antoinemadec/FixCursorHold.nvim" -- Fixes cursorhold performance
+  use {
+    "folke/trouble.nvim",
+    config = function ()
+      require("trouble").setup{}
+    end
+  }
 
-  -- Buffers
+  -- Buffers --
   use "akinsho/bufferline.nvim" -- Better buffers
   use "moll/vim-bbye" -- Closing buffers without messiness
 
-  -- Aesthetics
-  -- use "tanvirtin/monokai.nvim" -- Monokai color theme
-  use "navarasu/onedark.nvim" -- Onedark color theme
+  -- Color schemes --
+  use "navarasu/onedark.nvim" -- Onedark color scheme
+  -- use "tanvirtin/monokai.nvim" -- Monokai color scheme
+  -- use "marko-cerovac/material.nvim" -- Material color scheme
+  -- use "catppuccin/nvim" -- Catppuccin color sceme
+
+  -- Aesthetics --
   use "kyazdani42/nvim-web-devicons" -- Dev icons in Neovim
   use "nvim-lualine/lualine.nvim" -- Improved status line
   use "lukas-reineke/indent-blankline.nvim" -- Indentation lines
   use "goolord/alpha-nvim" -- Neovim startup screen
-
-  -- Completion
   -- use {
-  --   "ms-jpq/coq_nvim", -- Completion engine
-  --   run = ":COQnow [--shut-up]"
+  --   "rcarriga/nvim-notify", -- Better looking notifications
+  --   config = function ()
+  --     require("notify").setup{stages = "fade"}
+  --   end
   -- }
 
-  -- use "ms-jpq/coq.artifacts" -- 9000+ Snippets
-
+  -- Completion --
   use "hrsh7th/nvim-cmp" -- Completion plugin
   use "hrsh7th/cmp-buffer" -- buffer completions
   use "hrsh7th/cmp-path" -- path completions
@@ -116,6 +125,7 @@ return packer.startup(function(use)
   -- Flutter
   use "akinsho/flutter-tools.nvim"
   use "Nash0x7E2/awesome-flutter-snippets";
+  use "dart-lang/dart-vim-plugin"
   use "tiagofumo/dart-vim-flutter-layout";
 
   -- Automatically set up your configuration after cloning packer.nvim

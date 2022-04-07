@@ -65,12 +65,12 @@ local function lsp_keymaps(bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>ca", ":Lspsaga code_action<CR>", opts)
   vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>cd", ":Lspsaga show_line_diagnostics<CR>", opts)
 
-  vim.api.nvim_buf_set_keymap(bufnr, "n", "K", ":Lspsaga hover_doc<CR>", opts)
-  vim.api.nvim_buf_set_keymap(bufnr, "n", "<C-k>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>", opts)
-  vim.api.nvim_buf_set_keymap(bufnr, "n", "<C-j>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>", opts)
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "K", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>", opts)
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "J", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>", opts)
 
   vim.api.nvim_buf_set_keymap(bufnr, "n", "gr", ":Lspsaga rename<CR>", opts)
-  vim.api.nvim_buf_set_keymap(bufnr, "n", "gd", ":Lspsaga preview_definition<CR>", opts)
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "gd", ":Lspsaga hover_doc<CR>", opts)
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "gD", ":Lspsaga preview_definition<CR>", opts)
 
   -- vim.api.nvim_buf_set_keymap(bufnr, "n", "gh", ":Lspsaga lsp_finder<CR>", opts)
   -- vim.api.nvim_buf_set_keymap(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
