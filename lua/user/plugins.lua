@@ -48,11 +48,14 @@ return packer.startup(function(use)
   use "nvim-lua/plenary.nvim" -- Useful lua functions used by lots of plugins
 
   -- Utilities
+  use {
+    "akinsho/toggleterm.nvim",
+    branch = "main",
+  }
   use "windwp/nvim-autopairs" -- Automatically close braces, brackets, etc.
   use "numToStr/Comment.nvim" -- Commenting shortcuts
   use "lewis6991/gitsigns.nvim" -- Git features
   use "kyazdani42/nvim-tree.lua" -- File navigation
-  use "akinsho/toggleterm.nvim" -- Togglable terminal
   use "lewis6991/impatient.nvim" -- Improves startup time
   use "ahmedkhalf/project.nvim" -- Project selection
   use "nathom/filetype.nvim" -- Improves startup time
@@ -65,7 +68,10 @@ return packer.startup(function(use)
   }
 
   -- Buffers --
-  use "akinsho/bufferline.nvim" -- Better buffers
+  use {
+    "akinsho/bufferline.nvim",
+    branch = "main",
+  }
   use "moll/vim-bbye" -- Closing buffers without messiness
 
   -- Color schemes --

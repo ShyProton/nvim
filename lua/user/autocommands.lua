@@ -11,5 +11,11 @@ vim.cmd [[
     autocmd FileType dart setlocal tabstop=2
   augroup end
 
+  augroup _asm
+    autocmd!
+    autocmd FileType asm setlocal shiftwidth=2
+    autocmd FileType asm setlocal tabstop=2
+  augroup end
+
   autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif
 ]]
