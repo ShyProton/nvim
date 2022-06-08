@@ -40,16 +40,16 @@ packer.init {
 
 -- Install your plugins here
 return packer.startup(function(use)
-  -- Packer
+  -- Packer --
   use "wbthomason/packer.nvim" -- Have packer manage itself
 
-  -- Dependencies
+  -- Dependencies --
   use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
   use "nvim-lua/plenary.nvim" -- Useful lua functions used by lots of plugins
 
-  -- Utilities
+  -- Utilities --
   use {
-    "akinsho/toggleterm.nvim",
+    "akinsho/toggleterm.nvim", -- Toggleable terminal
     branch = "main",
   }
   use "windwp/nvim-autopairs" -- Automatically close braces, brackets, etc.
@@ -60,16 +60,30 @@ return packer.startup(function(use)
   use "ahmedkhalf/project.nvim" -- Project selection
   use "nathom/filetype.nvim" -- Improves startup time
   use "antoinemadec/FixCursorHold.nvim" -- Fixes cursorhold performance
+  use "tpope/vim-surround" -- Easily change/add/delete parentheses, quotes...
   use {
-    "folke/trouble.nvim",
+    "folke/trouble.nvim", -- Shows all warnings/errors/info... in the project
     config = function ()
-      require("trouble").setup{}
+      require("trouble").setup{
+        signs = {
+          error = " ",
+          warning = " ",
+          hint = " ",
+          information = " "
+        }
+      }
+    end
+  }
+  use {
+    "nvim-neorg/neorg", -- Neovim org mode for documentation or note-taking
+    config = function ()
+      require("neorg").setup{}
     end
   }
 
   -- Buffers --
   use {
-    "akinsho/bufferline.nvim",
+    "akinsho/bufferline.nvim", --Clean looking buffers and buffer utilities
     branch = "main",
   }
   use "moll/vim-bbye" -- Closing buffers without messiness
@@ -78,7 +92,10 @@ return packer.startup(function(use)
   use "navarasu/onedark.nvim" -- Onedark color scheme
   -- use "tanvirtin/monokai.nvim" -- Monokai color scheme
   -- use "marko-cerovac/material.nvim" -- Material color scheme
-  -- use "catppuccin/nvim" -- Catppuccin color sceme
+  -- use {
+  --   "catppuccin/nvim",
+  --   as = "catppuccin"
+  -- }
 
   -- Aesthetics --
   use "kyazdani42/nvim-web-devicons" -- Dev icons in Neovim
@@ -101,11 +118,11 @@ return packer.startup(function(use)
   use "saadparwaiz1/cmp_luasnip" -- snippet completions
   use "hrsh7th/cmp-nvim-lua" -- Cmp Lua
 
-  -- Snippets
+  -- Snippets --
   use "L3MON4D3/LuaSnip" -- snippet engine
   use "rafamadriz/friendly-snippets" -- collection of common snippets in many languages
 
-  -- LSP
+  -- LSP --
   use "neovim/nvim-lspconfig" -- enable LSP
   use "williamboman/nvim-lsp-installer" -- simple to use language server installer
   use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
@@ -117,22 +134,50 @@ return packer.startup(function(use)
   --   end
   -- }
 
-  -- Telescope
-  use "nvim-telescope/telescope.nvim"
-  use "nvim-telescope/telescope-media-files.nvim"
+  -- Telescope --
+  use "nvim-telescope/telescope.nvim" -- Universal searcher
+  use "nvim-telescope/telescope-media-files.nvim" -- Show images in telescope
 
-  -- Treesitter
+  -- Treesitter --
   use {
     "nvim-treesitter/nvim-treesitter", -- improved syntax highlighting
     run = ":TSUpdate",
   }
 
-  -- Languages --
-  -- Flutter
-  use "akinsho/flutter-tools.nvim"
-  use "Nash0x7E2/awesome-flutter-snippets";
-  use "dart-lang/dart-vim-plugin"
-  use "tiagofumo/dart-vim-flutter-layout";
+  -- Flutter --
+  -- use "akinsho/flutter-tools.nvim"
+  -- use "Nash0x7E2/awesome-flutter-snippets";
+  -- use "dart-lang/dart-vim-plugin"
+  -- use "tiagofumo/dart-vim-flutter-layout";
+
+  -- Python --
+  -- use {
+  --   "dccsillag/magma-nvim", -- Jupyter support in neovim
+  --   run = ":UpdateRemotePlugins",
+  -- };
+
+  -- Web --
+  use {
+    "windwp/nvim-ts-autotag", -- Auto-close html tags
+    config = function ()
+      require("nvim-ts-autotag").setup{}
+    end
+  }
+
+  use {
+    "RRethy/vim-hexokinase", -- Show color swatch next to color value
+    run = 'make hexokinase'
+  }
+
+  use {
+    "jose-elias-alvarez/nvim-lsp-ts-utils", -- Typescript utilities
+    config = function ()
+      require("nvim-lsp-ts-utils").setup{}
+    end
+  }
+
+  use "JoosepAlviste/nvim-ts-context-commentstring" -- JSX/TSX contextual commenting
+  use "mattn/emmet-vim" -- Emmet support in (neo)vim
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

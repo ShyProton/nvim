@@ -39,7 +39,7 @@ keymap("n", "<A-h>", "<cmd>BufferLineMovePrev<CR>", opts)
 keymap("n", "<C-x>", "<cmd>Bdelete!<CR>", opts)
 
 -- Insert --
-keymap("i", "<C-c>", "<ESC>", opts)
+keymap("i", "<C-[>", "<ESC>", opts)
 
 -- Visual --
 -- Stay in indent mode
@@ -73,19 +73,31 @@ keymap("n", "<C-g>", "<cmd>Telescope live_grep<cr>", opts)
 keymap("n", "<leader>e", "<cmd>NvimTreeToggle<cr>", opts)
 
 -- Terminal --
-keymap("n", "<C-]>", "<cmd>ToggleTerm direction=vertical size=95<cr>", opts)
-keymap("n", "<C-[>", "<cmd>ToggleTerm direction=float<cr>", opts)
+keymap("n", "<C-]>", "<cmd>exe v:count1 . \"ToggleTerm direction=vertical size=95\"<cr>", opts)
+keymap("n", "<C-\\>", "<cmd>exe v:count1 . \"ToggleTerm direction=float\"<cr>", opts)
+keymap("t", "<C-]>", "<cmd>exe v:count1 . \"ToggleTerm direction=vertical size=95\"<cr>", opts)
+keymap("t", "<C-\\>", "<cmd>exe v:count1 . \"ToggleTerm direction=float\"<cr>", opts)
+
+keymap("n", "<C-t>", "<cmd>ToggleTermToggleAll<cr>", opts)
+keymap("t", "<C-t>", "<cmd>ToggleTermToggleAll<cr>", opts)
 
 -- Formatting --
 keymap("n", "<leader>\\", "<cmd>Format<cr>", opts)
 
 -- Flutter --
-keymap("n", "<leader>ff", "<cmd>Telescope flutter commands<CR>", opts)
-keymap("n", "<leader>fo", "<cmd>FlutterOutlineToggle<CR>", opts)
-keymap("n", "<leader>fr", "<cmd>FlutterRun<CR>", opts)
-keymap("n", "<leader>fR", "<cmd>FlutterRestart<CR>", opts)
-keymap("n", "<leader>fq", "<cmd>FlutterQuit<CR>", opts)
-keymap("n", "<leader>fd", "<cmd>FlutterDetach<CR>", opts)
+-- keymap("n", "<leader>ff", "<cmd>Telescope flutter commands<CR>", opts)
+-- keymap("n", "<leader>fo", "<cmd>FlutterOutlineToggle<CR>", opts)
+-- keymap("n", "<leader>fr", "<cmd>FlutterRun<CR>", opts)
+-- keymap("n", "<leader>fR", "<cmd>FlutterRestart<CR>", opts)
+-- keymap("n", "<leader>fq", "<cmd>FlutterQuit<CR>", opts)
+-- keymap("n", "<leader>fd", "<cmd>FlutterDetach<CR>", opts)
+
+-- Magma --
+keymap("v", "<leader>nr", "<cmd>MagmaEvaluateVisual<CR>", opts)
+keymap("n", "<leader>nr", "<cmd>MagmaReevaluateCell<CR>", opts)
+keymap("n", "<leader>nl", "<cmd>MagmaEvaluateLine<CR>", opts)
+keymap("n", "<leader>nd", "<cmd>MagmaDelete<CR>", opts)
+keymap("n", "<leader>no", "<cmd>MagmaShowOutput<CR>", opts)
 
 -- Gitsigns --
 keymap("n", "<leader>hp", "<cmd>Gitsigns preview_hunk<CR>", opts)
