@@ -44,6 +44,7 @@ vim.opt.scrolloff = 8
 vim.opt.sidescrolloff = 8
 vim.opt.guifont = 'monospace:h17'
 
+vim.g.user_emmet_leader_key='<C-z>'
 -- vim.g.python3_host_prog = '/usr/bin/python3'
 -- vim.g.dart_style_guide = 2
 -- vim.opt.lsp_log_file = 0

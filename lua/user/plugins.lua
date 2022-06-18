@@ -61,6 +61,19 @@ return packer.startup(function(use)
   use "nathom/filetype.nvim" -- Improves startup time
   use "antoinemadec/FixCursorHold.nvim" -- Fixes cursorhold performance
   use "tpope/vim-surround" -- Easily change/add/delete parentheses, quotes...
+  -- TODO: Install which-key.nvim
+  use {
+    "folke/which-key.nvim",
+    config = function()
+      require("which-key").setup{}
+    end
+  }
+  use {
+    "folke/todo-comments.nvim",
+    config = function ()
+      require("todo-comments").setup{}
+    end
+  } -- Highlight and search TODO-esque comments
   use {
     "folke/trouble.nvim", -- Shows all warnings/errors/info... in the project
     config = function ()
@@ -74,12 +87,26 @@ return packer.startup(function(use)
       }
     end
   }
-  use {
-    "nvim-neorg/neorg", -- Neovim org mode for documentation or note-taking
-    config = function ()
-      require("neorg").setup{}
-    end
-  }
+  use "simrat39/symbols-outline.nvim" -- Outline tree of variables, fns, etc.
+  -- TODO: Figure this plugin out its weird
+  -- use {
+  --   "nvim-neorg/neorg", -- Neovim org mode for documentation or note-taking
+  --   config = function ()
+  --     require("neorg").setup{
+  --       load = {
+  --         ["core.defaults"] = {},
+  --         -- ["core.norg.concealer"] = {},
+  --         ["core.norg.dirman"] = {
+  --           config = {
+  --             workspaces = {
+  --               random = "/home/shayanr/Documents/notes/random"
+  --             }
+  --           }
+  --         }
+  --       }
+  --     }
+  --   end
+  -- }
 
   -- Buffers --
   use {
