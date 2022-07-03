@@ -129,6 +129,15 @@ return packer.startup(function(use)
   use "nvim-lualine/lualine.nvim" -- Improved status line
   use "lukas-reineke/indent-blankline.nvim" -- Indentation lines
   use "goolord/alpha-nvim" -- Neovim startup screen
+  use {
+    "andweeb/presence.nvim",
+    config = function ()
+      require("presence"):setup{
+        neovim_image_text = "Neovim",
+        main_image = "file"
+      }
+    end
+  } -- Discord rich presence
   -- use {
   --   "rcarriga/nvim-notify", -- Better looking notifications
   --   config = function ()
