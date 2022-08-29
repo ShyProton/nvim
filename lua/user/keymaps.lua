@@ -80,6 +80,9 @@ wk.register({
 
     -- NvimTree command
     e = {"<cmd>NvimTreeToggle<cr>", "Explorer"},
+
+    -- Mason server managers
+    s = {"<cmd>Mason<cr>", "Servers"},
   },
 
   -- Emmet
@@ -142,7 +145,7 @@ wk.register({
   ["<C-x>"] = {"<cmd>Bdelete!<cr>", "Close Buffer"},
 
   -- Toggleterm
-  ["<C-]>"] = {"<cmd>exe v:count1 . \"ToggleTerm direction=vertical size=95\"<cr>", "Open Side Terminal"},
+  ["<C-]>"] = {"<cmd>exe v:count1 . \"ToggleTerm direction=vertical size=90\"<cr>", "Open Side Terminal"},
   ["<C-\\>"] = {"<cmd>exe v:count1 . \"ToggleTerm direction=float\"<cr>", "Open Floating Terminal"},
   ["<C-t>"] = {"<cmd>ToggleTermToggleAll<cr>", "Toggle Terminals"},
 }, normal)
@@ -231,7 +234,7 @@ wk.register({
   ["<C-h>"] = {"<C-\\><C-N><C-w>h", "Move Left a Window"},
 
   -- Toggleterm
-  ["<C-]>"] = {"<cmd>exe v:count1 . \"ToggleTerm direction=vertical size=95\"<cr>", "Open Side Terminal"},
+  ["<C-]>"] = {"<cmd>exe v:count1 . \"ToggleTerm direction=vertical size=90\"<cr>", "Open Side Terminal"},
   ["<C-\\>"] = {"<cmd>exe v:count1 . \"ToggleTerm direction=float\"<cr>", "Open Floating Terminal"},
   ["<C-t>"] = {"<cmd>ToggleTermToggleAll<cr>", "Toggle Terminals"},
 }, terminal)

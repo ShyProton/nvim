@@ -25,7 +25,7 @@ vim.g.indent_blankline_use_treesitter = false
 --   "declaration", "expression", "pattern", "primary_expression",
 -- }
 
-vim.cmd [[highlight ContextHighlight guifg=#A7AAB0 gui=nocombine]]
+vim.cmd [[highlight ContextHighlight guifg=#a6adc8 gui=nocombine]]
 -- vim.cmd [[highlight IndentBlanklineIndent2 guifg=#E5C07B gui=nocombine]]
 -- vim.cmd [[highlight IndentBlanklineIndent3 guifg=#98C379 gui=nocombine]]
 -- vim.cmd [[highlight IndentBlanklineIndent4 guifg=#56B6C2 gui=nocombine]]

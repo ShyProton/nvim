@@ -1,34 +1,54 @@
-require('onedark').setup  {
-  -- Main options --
-  style = 'warmer', -- Default theme style. Choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
-  transparent = false,  -- Show/hide background
-  term_colors = false, -- Change terminal color as per the selected theme style
-  ending_tildes = false, -- Show the end-of-buffer tildes. By default they are hidden
-  -- toggle theme style ---
-  toggle_style_key = '<NOP>', -- Default keybinding to toggle
-  -- toggle_style_list = {'dark', 'darker', 'cool', 'deep', 'warm', 'warmer', 'light'}, -- List of styles to toggle between
+-- require('onedark').setup  {
+--   -- Main options --
+--   style = 'warmer', -- Default theme style. Choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
+--   transparent = false,  -- Show/hide background
+--   term_colors = false, -- Change terminal color as per the selected theme style
+--   ending_tildes = false, -- Show the end-of-buffer tildes. By default they are hidden
+--   -- toggle theme style ---
+--   toggle_style_key = '<NOP>', -- Default keybinding to toggle
+--   -- toggle_style_list = {'dark', 'darker', 'cool', 'deep', 'warm', 'warmer', 'light'}, -- List of styles to toggle between
+--
+--   -- Change code style ---
+--   -- Options are italic, bold, underline, none
+--   -- You can configure multiple style with comma seperated, For e.g., keywords = 'italic,bold'
+--   code_style = {
+--     comments = 'italic',
+--     keywords = 'none',
+--     functions = 'bold',
+--     strings = 'none',
+--     variables = 'none'
+--   },
+--
+--   -- Custom Highlights --
+--   colors = {}, -- Override default colors
+--   highlights = {}, -- Override highlight groups
+--
+--   -- Plugins Config --
+--   diagnostics = {
+--     darker = true, -- darker colors for diagnostic
+--     undercurl = true,   -- use undercurl instead of underline for diagnostics
+--     background = true,    -- use background color for virtual text
+--   },
+-- }
+--
+-- require('onedark').load()
 
-  -- Change code style ---
-  -- Options are italic, bold, underline, none
-  -- You can configure multiple style with comma seperated, For e.g., keywords = 'italic,bold'
-  code_style = {
-    comments = 'italic',
-    keywords = 'none',
-    functions = 'bold',
-    strings = 'none',
-    variables = 'none'
+require("catppuccin").setup{
+  styles = {
+    functions = {"bold"}
   },
-
-  -- Custom Highlights --
-  colors = {}, -- Override default colors
-  highlights = {}, -- Override highlight groups
-
-  -- Plugins Config --
-  diagnostics = {
-    darker = true, -- darker colors for diagnostic
-    undercurl = true,   -- use undercurl instead of underline for diagnostics
-    background = true,    -- use background color for virtual text
-  },
+  integrations = {
+    native_lsp = {
+      underlines = {
+        errors = {"undercurl"},
+        hints = {"undercurl"},
+        warnings = {"undercurl"},
+        information = {"undercurl"},
+      }
+    }
+  }
 }
 
-require('onedark').load()
+vim.g.catppuccin_flavour = "mocha"
+vim.cmd [[colorscheme catppuccin]]
+

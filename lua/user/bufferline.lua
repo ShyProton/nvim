@@ -13,7 +13,13 @@ bufferline.setup {
     -- NOTE: this plugin is designed with this icon in mind,
     -- and so changing this is NOT recommended, this is intended
     -- as an escape hatch for people who cannot bear it for whatever reason
-    indicator_icon = "▎",
+    --[[ indicator_icon = "▎", ]] -- NOTE: Deprecated
+
+    indicator = {
+      style = "icon",
+      icon = "▎"
+    },
+
     buffer_close_icon = "",
     -- buffer_close_icon = '',
     modified_icon = "●",
@@ -55,7 +61,7 @@ bufferline.setup {
     --     return true
     --   end
     -- end,
-    offsets = { { filetype = "NvimTree", text = "Project Directory", padding = 1 } },
+    offsets = { { filetype = "NvimTree", text = "Project Directory", padding = 0 } },
     show_buffer_icons = true,
     show_buffer_close_icons = false,
     show_close_icon = false,
@@ -135,16 +141,16 @@ bufferline.setup {
     -- },
     --
     modified = {
-      guifg = { attribute = "fg", highlight = "TabLine" },
-      guibg = { attribute = "bg", highlight = "TabLine" },
+      fg = { attribute = "fg", highlight = "TabLine" },
+      bg = { attribute = "bg", highlight = "TabLine" },
     },
     modified_selected = {
-      guifg = { attribute = "fg", highlight = "Normal" },
-      guibg = { attribute = "bg", highlight = "Normal" },
+      fg = { attribute = "fg", highlight = "Normal" },
+      bg = { attribute = "bg", highlight = "Normal" },
     },
     modified_visible = {
-      guifg = { attribute = "fg", highlight = "TabLine" },
-      guibg = { attribute = "bg", highlight = "TabLine" },
+      fg = { attribute = "fg", highlight = "TabLine" },
+      bg = { attribute = "bg", highlight = "TabLine" },
     },
     --
     -- separator = {

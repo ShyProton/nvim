@@ -61,7 +61,6 @@ return packer.startup(function(use)
   use "nathom/filetype.nvim" -- Improves startup time
   use "antoinemadec/FixCursorHold.nvim" -- Fixes cursorhold performance
   use "tpope/vim-surround" -- Easily change/add/delete parentheses, quotes...
-  -- TODO: Install which-key.nvim
   use {
     "folke/which-key.nvim",
     config = function()
@@ -116,13 +115,14 @@ return packer.startup(function(use)
   use "moll/vim-bbye" -- Closing buffers without messiness
 
   -- Color schemes --
-  use "navarasu/onedark.nvim" -- Onedark color scheme
+  -- use "Mofiqul/dracula.nvim"
+  -- use "navarasu/onedark.nvim" -- Onedark color scheme
   -- use "tanvirtin/monokai.nvim" -- Monokai color scheme
   -- use "marko-cerovac/material.nvim" -- Material color scheme
-  -- use {
-  --   "catppuccin/nvim",
-  --   as = "catppuccin"
-  -- }
+  use {
+    "catppuccin/nvim",
+    as = "catppuccin"
+  }
 
   -- Aesthetics --
   use "kyazdani42/nvim-web-devicons" -- Dev icons in Neovim
@@ -159,8 +159,10 @@ return packer.startup(function(use)
   use "rafamadriz/friendly-snippets" -- collection of common snippets in many languages
 
   -- LSP --
-  use "neovim/nvim-lspconfig" -- enable LSP
-  use "williamboman/nvim-lsp-installer" -- simple to use language server installer
+  use "williamboman/mason.nvim" -- Language server (and others) installer
+  use "williamboman/mason-lspconfig.nvim" -- Makes Mason work well with lspconfig
+  use "neovim/nvim-lspconfig" -- LSP configurations
+  --[[ use "williamboman/nvim-lsp-installer" -- simple to use language server installer ]]
   use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
   use "tami5/lspsaga.nvim" -- LSP UI Improvements
   -- use {
