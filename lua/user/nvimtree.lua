@@ -83,8 +83,9 @@ nvim_tree.setup {
         { key = "v", cb = tree_cb "vsplit" },
       },
     },
+    -- Line numbers are useless here, but relative numbers are better for navigation
     number = false,
-    relativenumber = false,
+    relativenumber = true,
   },
   -- quit_on_open = 0,
   -- git_hl = 1,

@@ -1,4 +1,9 @@
-vim.g.symbols_outline = {
+local status_ok, symbols_outline = pcall(require, "symbols-outline")
+if not status_ok then
+  return
+end
+
+symbols_outline.setup({
   symbols = {
     Variable = {icon = "", hl = "TSConstant"},
     Constant = {icon = "", hl = "TSConstant"},
@@ -18,4 +23,4 @@ vim.g.symbols_outline = {
     Operator = {icon = "", hl = "TSClass"},
     TypeParameter = {icon = "", hl = "TSClass"},
   }
-}
+})

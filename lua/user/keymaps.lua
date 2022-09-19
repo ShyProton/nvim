@@ -14,6 +14,10 @@ vim.api.nvim_set_keymap("", "<Space>", "<Nop>", {noremap = true, silent = true})
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+vim.g.db_ui_save_location = "~/.config/db_ui"
+
+vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting_sync()' ]]
+
 -- Normal keymaps
 wk.register({
   -- Leader commands
@@ -83,6 +87,16 @@ wk.register({
 
     -- Mason server managers
     s = {"<cmd>Mason<cr>", "Servers"},
+
+    p = {"<cmd>Format<cr>", "Prettify"},
+
+    d = {
+      name = "+databases",
+      u = {"<cmd>DBUIToggle<cr>", "Toggle Database UI"},
+      f = {"<cmd>DBUIFindBuffer<cr>", "Find Buffer"},
+      r = {"<cmd>DBUIRenameBuffer<cr>", "Rename Buffer"},
+      l = {"<cmd>DBUILastQueryInfo<cr>", "Last Query Info"}
+    }
   },
 
   -- Emmet

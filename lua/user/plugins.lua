@@ -165,22 +165,23 @@ return packer.startup(function(use)
   --[[ use "williamboman/nvim-lsp-installer" -- simple to use language server installer ]]
   use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
   use "tami5/lspsaga.nvim" -- LSP UI Improvements
-  -- use {
-  --   "j-hui/fidget.nvim",
-  --   config = function ()
-  --     require("fidget").setup{}
-  --   end
-  -- }
+  use {
+    "j-hui/fidget.nvim",
+    config = function ()
+      require("fidget").setup{}
+    end
+  }
 
   -- Telescope --
   use "nvim-telescope/telescope.nvim" -- Universal searcher
-  use "nvim-telescope/telescope-media-files.nvim" -- Show images in telescope
+  --[[ use "nvim-telescope/telescope-media-files.nvim" -- Show images in telescope ]]
 
   -- Treesitter --
   use {
     "nvim-treesitter/nvim-treesitter", -- improved syntax highlighting
     run = ":TSUpdate",
   }
+  use {"nvim-treesitter/nvim-treesitter-context"} -- shows context of visible contents
 
   -- Flutter --
   -- use "akinsho/flutter-tools.nvim"
@@ -194,7 +195,22 @@ return packer.startup(function(use)
   --   run = ":UpdateRemotePlugins",
   -- };
 
+  use {
+   "luk400/vim-jukit",
+    -- json is needed since .ipynb are formatted in json
+    ft = {"python", "json"},
+  }
+
+  -- Databases
+  -- TODO: Figure out why the UI for this is buggy
+  use {"tpope/vim-dadbod"}
+  use {"kristijanhusak/vim-dadbod-ui"}
+
+  -- Java
+  use { "mfussenegger/nvim-jdtls", ft = {"java"} }
+
   -- Web --
+  -- TODO: Make these plugins only load with their respective languages
   use {
     "windwp/nvim-ts-autotag", -- Auto-close html tags
     config = function ()
@@ -217,6 +233,12 @@ return packer.startup(function(use)
   use "JoosepAlviste/nvim-ts-context-commentstring" -- JSX/TSX contextual commenting
   use "mattn/emmet-vim" -- Emmet support in (neo)vim
 
+  use {
+    "karb94/neoscroll.nvim",
+    config = function ()
+      require("neoscroll").setup{}
+    end
+  }
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then
