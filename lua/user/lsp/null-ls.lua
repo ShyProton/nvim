@@ -10,6 +10,7 @@ local diagnostics = null_ls.builtins.diagnostics
 
 null_ls.setup {
   -- Formats on save (blocks neovim until results are applied)
+
   --[[ on_attach = function(client, bufnr) ]]
   --[[   if client.supports_method("textDocument/formatting") then ]]
   --[[     vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr }) ]]
@@ -23,7 +24,7 @@ null_ls.setup {
   --[[       }) ]]
   --[[   end ]]
   --[[ end, ]]
-  --[[]]
+
   debug = false,
   sources = {
     -- Python
@@ -34,8 +35,38 @@ null_ls.setup {
     -- formatting.dart_format,
 
     -- Web
-    -- null_ls.builtins.diagnostics.eslint,
-    -- null_ls.builtins.code_actions.eslint,
-    null_ls.builtins.formatting.prettierd,
+    --[[ null_ls.builtins.diagnostics.eslint_d.with { ]]
+    --[[   filetypes = { ]]
+    --[[     "javascript", "javascriptreact", "typescript", "typescriptreact", "vue", "svelte" ]]
+    --[[   } ]]
+    --[[ }, ]]
+    --[[ null_ls.builtins.code_actions.eslint_d.with { ]]
+    --[[   filetypes = { ]]
+    --[[     "javascript", "javascriptreact", "typescript", "typescriptreact", "vue", "svelte" ]]
+    --[[   } ]]
+    --[[ }, ]]
+
+    formatting.prettierd.with {
+      filetypes = {
+        "html",
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact",
+        "vue",
+        "css",
+        "scss",
+        "less",
+        "html",
+        "json",
+        "jsonc",
+        "yaml",
+        "markdown",
+        "markdown.mdx",
+        "graphql",
+        "handlebars",
+        "svelte"
+      }
+    },
   },
 }

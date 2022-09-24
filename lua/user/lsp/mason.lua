@@ -22,7 +22,7 @@ require("mason-lspconfig").setup_handlers {
   --[[ end, ]]
 
   function (server_name)
-    require("lspconfig")[server_name].setup {opts}
+    require("lspconfig")[server_name].setup ( opts )
   end
 }
 

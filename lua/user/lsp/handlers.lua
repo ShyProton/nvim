@@ -95,22 +95,34 @@ local function lsp_keymaps(bufnr)
 end
 
 M.on_attach = function(client, bufnr)
-  if client.name == "tsserver" or client.name == "cssls" then
+  if client.name ~= "null-ls" then
     client.resolved_capabilities.document_formatting = false
     client.resolved_capabilities.document_range_formatting = false
-
-    local ts_utils = require("nvim-lsp-ts-utils")
-    ts_utils.setup({})
-    ts_utils.setup_client(client)
-
-    local opts = { noremap = true, silent = false }
-
-    -- vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>to", "<cmd>TSLspOrganize<CR>", opts)
-    -- vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>tr", "<cmd>TSLspRenameFile<CR>", opts)
-    -- vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>ti", "<cmd>TSLspImportAll<CR>", opts)
-
-    vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
   end
+
+  --[[ if ( ]]
+  --[[     client.name == "tsserver" or ]]
+  --[[         client.name == "cssls" or ]]
+  --[[         client.name == "svelte" ]]
+  --[[     ) then ]]
+  --[[   client.resolved_capabilities.document_formatting = false ]]
+  --[[   client.resolved_capabilities.document_range_formatting = false ]]
+  --[[ end ]]
+
+  -- TODO: Have this plugin be loaded via filetype specification instead of here
+  --[[ local ts_utils = require("nvim-lsp-ts-utils") ]]
+  --[[ ts_utils.setup({}) ]]
+  --[[ ts_utils.setup_client(client) ]]
+
+  --[[ local opts = { noremap = true, silent = false } ]]
+
+  -- vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>to", "<cmd>TSLspOrganize<CR>", opts)
+  -- vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>tr", "<cmd>TSLspRenameFile<CR>", opts)
+  -- vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>ti", "<cmd>TSLspImportAll<CR>", opts)
+
+  --[[ end ]]
+
+  vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
 
   lsp_keymaps(bufnr)
   lsp_highlight_document(client)

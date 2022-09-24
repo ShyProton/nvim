@@ -131,7 +131,7 @@ jdtls.start_or_attach(config)
 require("jdtls.setup").add_commands()
 
 vim.bo.shiftwidth = 4
-vim.bo.tabstop = 4
+vim.bo.tabstop = 8 -- was 4
 
 -- Java-specific keybinds
 local status_ok, wk = pcall(require, "which-key")

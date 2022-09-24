@@ -14,7 +14,7 @@ require 'user.gitsigns'
 require 'user.nvimtree'
 require 'user.bufferline'
 require 'user.toggleterm'
-require 'user.autocommands'
+--[[ require 'user.autocommands' ]]
 require 'user.lualine'
 require 'user.indentline'
 require 'user.alpha'

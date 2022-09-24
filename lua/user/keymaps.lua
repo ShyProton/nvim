@@ -62,12 +62,13 @@ wk.register({
     },
 
     -- TypeScript commands
-    t = {
-      name = "+typescript",
-      o = {"<cmd>TSLspOrganize<cr>", "Organize Imports"},
-      r = {"<cmd>TSLspRenameFile<cr>", "Rename File"},
-      i = {"<cmd>TSLspImportAll<cr>", "Auto-Import"}
-    },
+    --[[ t = { ]]
+    --[[   name = "+typescript", ]]
+    --[[   o = {"<cmd>TSLspOrganize<cr>", "Organize Imports"}, ]]
+    --[[   r = {"<cmd>TSLspRenameFile<cr>", "Rename File"}, ]]
+    --[[   i = {"<cmd>TSLspImportAll<cr>", "Auto-Import"} ]]
+    --[[ }, ]]
+    --[[]]
 
     -- General code commands
     c = {
@@ -159,9 +160,10 @@ wk.register({
   ["<C-x>"] = {"<cmd>Bdelete!<cr>", "Close Buffer"},
 
   -- Toggleterm
-  ["<C-]>"] = {"<cmd>exe v:count1 . \"ToggleTerm direction=vertical size=90\"<cr>", "Open Side Terminal"},
-  ["<C-\\>"] = {"<cmd>exe v:count1 . \"ToggleTerm direction=float\"<cr>", "Open Floating Terminal"},
-  ["<C-t>"] = {"<cmd>ToggleTermToggleAll<cr>", "Toggle Terminals"},
+  ["<M-Enter>"] = {"<cmd>ToggleTermToggleAll<cr>", "Toggle Terminals"},
+  ["<M-\\>"] = {"<cmd>exe v:count1 . \"ToggleTerm direction=float\"<cr>", "Floating Terminal"},
+  ["<M-]>"] = {"<cmd>exe v:count1 . \"ToggleTerm direction=vertical size=90\"<cr>", "Side Terminal"},
+  ["<M-[>"] = {"<cmd>exe v:count1 . \"ToggleTerm direction=horizontal size=15\"<cr>", "Bottom Terminal"},
 }, normal)
 
 -- Visual keymaps
@@ -244,11 +246,13 @@ wk.register({
   -- Better terminla navigation
   ["<C-k>"] = {"<C-\\><C-N><C-w>j", "Move Up a Window"},
   ["<C-j>"] = {"<C-\\><C-N><C-w>h", "Move Down a Window"},
-  ["<C-l>"] = {"<C-\\><C-N><C-w>l", "Move Right a Window"},
+  -- FIXME: Have C-l clear the terminal screen instead of doing whatever it does (normal mode?)
+  ["<C-l>"] = {"<Nop>", "Something"},
   ["<C-h>"] = {"<C-\\><C-N><C-w>h", "Move Left a Window"},
+  -- TODO: Have C-[ not go into normal mode for the terminal so that it will instead use the terminal vi-mode
 
-  -- Toggleterm
-  ["<C-]>"] = {"<cmd>exe v:count1 . \"ToggleTerm direction=vertical size=90\"<cr>", "Open Side Terminal"},
-  ["<C-\\>"] = {"<cmd>exe v:count1 . \"ToggleTerm direction=float\"<cr>", "Open Floating Terminal"},
-  ["<C-t>"] = {"<cmd>ToggleTermToggleAll<cr>", "Toggle Terminals"},
+  ["<M-Enter>"] = {"<cmd>ToggleTermToggleAll<cr>", "Toggle Terminals"},
+  ["<M-\\>"] = {"<cmd>exe v:count1 . \"ToggleTerm direction=float\"<cr>", "Floating Terminal"},
+  ["<M-]>"] = {"<cmd>exe v:count1 . \"ToggleTerm direction=vertical size=90\"<cr>", "Side Terminal"},
+  ["<M-[>"] = {"<cmd>exe v:count1 . \"ToggleTerm direction=horizontal size=15\"<cr>", "Bottom Terminal"},
 }, terminal)

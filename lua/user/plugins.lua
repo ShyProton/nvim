@@ -198,7 +198,7 @@ return packer.startup(function(use)
   use {
    "luk400/vim-jukit",
     -- json is needed since .ipynb are formatted in json
-    ft = {"python", "json"},
+    ft = {"python"},
   }
 
   -- Databases
@@ -239,6 +239,7 @@ return packer.startup(function(use)
       require("neoscroll").setup{}
     end
   }
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then
