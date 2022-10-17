@@ -6,7 +6,7 @@ end
 local M = {}
 
 function M.setup(attach, capabilities)
-  flutter_tools.setup{
+  flutter_tools.setup {
     lsp = {
       on_attach = attach,
       capabilities = capabilities,
@@ -27,4 +27,3 @@ function M.setup(attach, capabilities)
 end
 
 return M
-

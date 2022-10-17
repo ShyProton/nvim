@@ -42,14 +42,14 @@ vim.opt.signcolumn = 'yes'
 vim.opt.wrap = false
 vim.opt.scrolloff = 8
 vim.opt.sidescrolloff = 8
-vim.opt.guifont = 'monospace:h17'
+vim.opt.guifont = 'Fira Code:h7'
 
-vim.g.user_emmet_leader_key='<C-z>'
+vim.g.user_emmet_leader_key = '<C-z>'
 
 vim.g.python3_host_prog = "/home/shayanr/.pyenvs/datasci/bin/python3"
+vim.g.leetcode_browser = "firefox"
 -- vim.g.dart_style_guide = 2
 -- vim.opt.lsp_log_file = 0
 -- vim.opt.foldmethod = "manual"
 
 vim.opt.shortmess:append 'c'
-

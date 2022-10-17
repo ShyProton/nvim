@@ -46,7 +46,7 @@ end
 
 local function lsp_highlight_document(client)
   -- Set autocommands conditional on server_capabilities
-  if client.resolved_capabilities.document_highlight then
+  if client.server_capabilities.document_highlight then
     vim.api.nvim_exec(
       [[
       augroup lsp_document_highlight
@@ -91,13 +91,17 @@ local function lsp_keymaps(bufnr)
   -- vim.api.nvim_buf_set_keymap(bufnr, "n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
   -- vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>q", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
 
-  vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
+  vim.cmd [[ command! Format execute 'lua vim.lsp.buf.format()' ]]
 end
 
 M.on_attach = function(client, bufnr)
-  if client.name ~= "null-ls" then
-    client.resolved_capabilities.document_formatting = false
-    client.resolved_capabilities.document_range_formatting = false
+  -- TODO: Better organize which lsps to include and exclude from formatting
+  if client.name ~= "null-ls"
+      and client.name ~= "clangd"
+      and client.name ~= "rust_analyzer"
+      and client.name ~= "sumneko_lua" then
+    client.server_capabilities.documentFormattingProvider = false
+    client.server_capabilities.documentRangeFormattingProvider = false
   end
 
   --[[ if ( ]]
@@ -122,13 +126,15 @@ M.on_attach = function(client, bufnr)
 
   --[[ end ]]
 
-  vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
+  -- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead ]]
+  vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.format()")
 
   lsp_keymaps(bufnr)
   lsp_highlight_document(client)
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.offsetEncoding = { "utf-16" }
 
 -- local status_ok, coq_nvim = pcall(require, "coq")
 -- if not status_ok then
@@ -142,6 +148,6 @@ if not status_ok then
   return
 end
 
-M.capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
+M.capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
 
 return M

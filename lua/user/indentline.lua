@@ -1,17 +1,17 @@
 local status_ok, indent_blankline = pcall(require, "indent_blankline")
 if not status_ok then
-	return
+  return
 end
 
 vim.g.indent_blankline_buftype_exclude = { "terminal", "nofile" }
 vim.g.indent_blankline_filetype_exclude = {
-	"help",
-	"startify",
-	"dashboard",
-	"packer",
-	"neogitstatus",
-	"NvimTree",
-	"Trouble",
+  "help",
+  "startify",
+  "dashboard",
+  "packer",
+  "neogitstatus",
+  "NvimTree",
+  "Trouble",
 }
 
 vim.g.indent_blankline_char = "▏"
@@ -37,14 +37,14 @@ vim.cmd [[highlight ContextHighlight guifg=#a6adc8 gui=nocombine]]
 -- vim.opt.listchars:append "eol:↴"
 
 indent_blankline.setup({
-	-- show_end_of_line = true,
-	-- space_char_blankline = "▏",
-	show_current_context = true,
+  -- show_end_of_line = true,
+  -- space_char_blankline = "▏",
+  show_current_context = true,
 
-	char_highlight_list = {
-	  -- "IndentBlanklineIndent3",
-	  -- "IndentBlanklineIndent1",
-	},
+  char_highlight_list = {
+    -- "IndentBlanklineIndent3",
+    -- "IndentBlanklineIndent1",
+  },
 
   context_highlight_list = {
     "ContextHighlight",

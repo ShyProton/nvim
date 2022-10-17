@@ -34,6 +34,9 @@ null_ls.setup {
     -- Dart
     -- formatting.dart_format,
 
+    -- C
+    diagnostics.cpplint,
+
     -- Web
     --[[ null_ls.builtins.diagnostics.eslint_d.with { ]]
     --[[   filetypes = { ]]

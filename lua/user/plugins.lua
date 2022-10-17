@@ -64,19 +64,19 @@ return packer.startup(function(use)
   use {
     "folke/which-key.nvim",
     config = function()
-      require("which-key").setup{}
+      require("which-key").setup {}
     end
   }
   use {
     "folke/todo-comments.nvim",
-    config = function ()
-      require("todo-comments").setup{}
+    config = function()
+      require("todo-comments").setup {}
     end
   } -- Highlight and search TODO-esque comments
   use {
     "folke/trouble.nvim", -- Shows all warnings/errors/info... in the project
-    config = function ()
-      require("trouble").setup{
+    config = function()
+      require("trouble").setup {
         signs = {
           error = " ",
           warning = " ",
@@ -106,6 +106,7 @@ return packer.startup(function(use)
   --     }
   --   end
   -- }
+  --[[ use "ianding1/leetcode.vim" ]]
 
   -- Buffers --
   use {
@@ -131,8 +132,8 @@ return packer.startup(function(use)
   use "goolord/alpha-nvim" -- Neovim startup screen
   use {
     "andweeb/presence.nvim",
-    config = function ()
-      require("presence"):setup{
+    config = function()
+      require("presence"):setup {
         neovim_image_text = "Neovim",
         main_image = "file"
       }
@@ -167,8 +168,8 @@ return packer.startup(function(use)
   use "tami5/lspsaga.nvim" -- LSP UI Improvements
   use {
     "j-hui/fidget.nvim",
-    config = function ()
-      require("fidget").setup{}
+    config = function()
+      require("fidget").setup {}
     end
   }
 
@@ -181,7 +182,7 @@ return packer.startup(function(use)
     "nvim-treesitter/nvim-treesitter", -- improved syntax highlighting
     run = ":TSUpdate",
   }
-  use {"nvim-treesitter/nvim-treesitter-context"} -- shows context of visible contents
+  use { "nvim-treesitter/nvim-treesitter-context" } -- shows context of visible contents
 
   -- Flutter --
   -- use "akinsho/flutter-tools.nvim"
@@ -196,25 +197,25 @@ return packer.startup(function(use)
   -- };
 
   use {
-   "luk400/vim-jukit",
+    "luk400/vim-jukit",
     -- json is needed since .ipynb are formatted in json
-    ft = {"python"},
+    ft = { "python" },
   }
 
   -- Databases
   -- TODO: Figure out why the UI for this is buggy
-  use {"tpope/vim-dadbod"}
-  use {"kristijanhusak/vim-dadbod-ui"}
+  use { "tpope/vim-dadbod" }
+  use { "kristijanhusak/vim-dadbod-ui" }
 
   -- Java
-  use { "mfussenegger/nvim-jdtls", ft = {"java"} }
+  use { "mfussenegger/nvim-jdtls", ft = { "java" } }
 
   -- Web --
   -- TODO: Make these plugins only load with their respective languages
   use {
     "windwp/nvim-ts-autotag", -- Auto-close html tags
-    config = function ()
-      require("nvim-ts-autotag").setup{}
+    config = function()
+      require("nvim-ts-autotag").setup {}
     end
   }
 
@@ -225,18 +226,19 @@ return packer.startup(function(use)
 
   use {
     "jose-elias-alvarez/nvim-lsp-ts-utils", -- Typescript utilities
-    config = function ()
-      require("nvim-lsp-ts-utils").setup{}
+    config = function()
+      require("nvim-lsp-ts-utils").setup {}
     end
   }
 
   use "JoosepAlviste/nvim-ts-context-commentstring" -- JSX/TSX contextual commenting
   use "mattn/emmet-vim" -- Emmet support in (neo)vim
 
+  -- Smooth scrolling with certain scrolling commands
   use {
     "karb94/neoscroll.nvim",
-    config = function ()
-      require("neoscroll").setup{}
+    config = function()
+      require("neoscroll").setup {}
     end
   }
 
@@ -247,4 +249,3 @@ return packer.startup(function(use)
   end
 end
 )
-

@@ -139,8 +139,8 @@ if not status_ok then
   return
 end
 
-local normal = { noremap = true, silent = true, mode="n" }
-local visual = { noremap = true, silent = true, mode="v" }
+local normal = { noremap = true, silent = true, mode = "n" }
+local visual = { noremap = true, silent = true, mode = "v" }
 
 -- Normal keybinds
 wk.register({
@@ -149,11 +149,11 @@ wk.register({
 
     l = {
       name = "+language",
-      o = {"<cmd>lua require('jdtls').organize_imports()<cr>", "Organize Imports"},
-      v = {"<cmd>lua require('jdtls').extract_variable()<cr>", "Extract Variable"},
-      c = {"<cmd>lua require('jdtls').extract_constant()<cr>", "Extract Constant"},
-      b = {"<cmd>lua require('jdtls').compile()<cr>", "Build Workspace"},
-      r = {"<cmd>JdtRestart<cr>", "Restart Jdtls"},
+      o = { "<cmd>lua require('jdtls').organize_imports()<cr>", "Organize Imports" },
+      v = { "<cmd>lua require('jdtls').extract_variable()<cr>", "Extract Variable" },
+      c = { "<cmd>lua require('jdtls').extract_constant()<cr>", "Extract Constant" },
+      b = { "<cmd>lua require('jdtls').compile()<cr>", "Build Workspace" },
+      r = { "<cmd>JdtRestart<cr>", "Restart Jdtls" },
     }
   }
 }, normal)
@@ -165,10 +165,9 @@ wk.register({
 
     l = {
       name = "+language",
-      v = {"<cmd>lua require('jdtls').extract_variable(true)<cr>", "Extract Variable"},
-      c = {"<cmd>lua require('jdtls').extract_constant(true)<cr>", "Extract Constant"},
-      m = {"<cmd>lua require('jdtls').extract_method(true)<cr>", "Extract Method"},
+      v = { "<cmd>lua require('jdtls').extract_variable(true)<cr>", "Extract Variable" },
+      c = { "<cmd>lua require('jdtls').extract_constant(true)<cr>", "Extract Constant" },
+      m = { "<cmd>lua require('jdtls').extract_method(true)<cr>", "Extract Method" },
     }
   }
 }, visual)
-

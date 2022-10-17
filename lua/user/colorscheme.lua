@@ -33,17 +33,17 @@
 --
 -- require('onedark').load()
 
-require("catppuccin").setup{
+require("catppuccin").setup {
   styles = {
-    functions = {"bold"}
+    functions = { "bold" }
   },
   integrations = {
     native_lsp = {
       underlines = {
-        errors = {"undercurl"},
-        hints = {"undercurl"},
-        warnings = {"undercurl"},
-        information = {"undercurl"},
+        errors = { "undercurl" },
+        hints = { "undercurl" },
+        warnings = { "undercurl" },
+        information = { "undercurl" },
       }
     }
   }
@@ -51,4 +51,3 @@ require("catppuccin").setup{
 
 vim.g.catppuccin_flavour = "mocha"
 vim.cmd [[colorscheme catppuccin]]
-
