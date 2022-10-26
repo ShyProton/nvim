@@ -1,3 +1,4 @@
+-- TODO: Seperate plugin files into their own directory
 require 'user.options'
 require 'user.keymaps'
 require 'user.impatient'
@@ -22,4 +23,5 @@ require 'user.project'
 -- require 'user.fluttertools'
 require 'user.lspsaga'
 require 'user.cursorhold'
-require 'user.symbols_outline'
+require 'user.dap'
+--[[ require 'user.symbols_outline' ]]

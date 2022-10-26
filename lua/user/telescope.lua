@@ -10,10 +10,27 @@ local actions = require "telescope.actions"
 
 telescope.setup {
   defaults = {
-
-    prompt_prefix = " ",
+    prompt_prefix = "   ",
     selection_caret = " ",
     path_display = { "smart" },
+    layout_strategy = "vertical",
+    layout_config = {
+      vertical = {
+        prompt_position = "top"
+      }
+    },
+    sorting_strategy = "ascending",
+
+    vimgrep_arguments = {
+      "rg",
+      "-L",
+      "--color=never",
+      "--no-heading",
+      "--with-filename",
+      "--line-number",
+      "--column",
+      "--smart-case",
+    },
 
     mappings = {
       i = {

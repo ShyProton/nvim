@@ -14,8 +14,21 @@ M.setup = function()
   end
 
   local config = {
-    -- disable virtual text
-    virtual_text = false,
+    -- virtual text diagnostics
+    virtual_text = {
+      format = function(diagnostic)
+        -- terminate vtext after the first line
+        local position = string.find(diagnostic.message, "\n")
+
+        -- removes the extra space at the end if a newline has been found
+        -- TODO: Find out if this messes up the message for non-rust diagnostics
+        if (position) then
+          position = position - 1
+        end
+
+        return string.sub(diagnostic.message, 1, position)
+      end
+    },
     -- show signs
     signs = {
       active = signs,
@@ -24,7 +37,7 @@ M.setup = function()
     underline = true,
     severity_sort = true,
     float = {
-      focusable = false,
+      focusable = true,
       style = "minimal",
       border = "rounded",
       source = "always",
@@ -95,11 +108,20 @@ local function lsp_keymaps(bufnr)
 end
 
 M.on_attach = function(client, bufnr)
+  local servers_with_builtin_formatting = {
+    "null-ls",
+    "clangd",
+    "rust_analyzer",
+    "sumneko_lua",
+    "jdtls",
+  }
+
   -- TODO: Better organize which lsps to include and exclude from formatting
-  if client.name ~= "null-ls"
-      and client.name ~= "clangd"
-      and client.name ~= "rust_analyzer"
-      and client.name ~= "sumneko_lua" then
+  if servers_with_builtin_formatting[client.name] then
+    --[[ if client.name ~= "null-ls" ]]
+    --[[     and client.name ~= "clangd" ]]
+    --[[     and client.name ~= "rust_analyzer" ]]
+    --[[     and client.name ~= "sumneko_lua" then ]]
     client.server_capabilities.documentFormattingProvider = false
     client.server_capabilities.documentRangeFormattingProvider = false
   end

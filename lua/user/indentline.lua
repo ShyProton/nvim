@@ -16,7 +16,7 @@ vim.g.indent_blankline_filetype_exclude = {
 
 vim.g.indent_blankline_char = "▏"
 vim.g.indent_blankline_show_trailing_blankline_indent = false
-vim.g.indent_blankline_use_treesitter = false
+vim.g.indent_blankline_use_treesitter = true
 
 -- HACK: work-around for https://github.com/lukas-reineke/indent-blankline.nvim/issues/59
 -- vim.wo.colorcolumn = "99999"
@@ -25,7 +25,7 @@ vim.g.indent_blankline_use_treesitter = false
 --   "declaration", "expression", "pattern", "primary_expression",
 -- }
 
-vim.cmd [[highlight ContextHighlight guifg=#a6adc8 gui=nocombine]]
+-- vim.cmd [[highlight ContextHighlight guifg=#a6adc8 gui=nocombine]]
 -- vim.cmd [[highlight IndentBlanklineIndent2 guifg=#E5C07B gui=nocombine]]
 -- vim.cmd [[highlight IndentBlanklineIndent3 guifg=#98C379 gui=nocombine]]
 -- vim.cmd [[highlight IndentBlanklineIndent4 guifg=#56B6C2 gui=nocombine]]

@@ -38,7 +38,7 @@ packer.init {
   },
 }
 
--- Install your plugins here
+-- TODO: Better organize plugins (perhaps sort into functions)
 return packer.startup(function(use)
   -- Packer --
   use "wbthomason/packer.nvim" -- Have packer manage itself
@@ -64,6 +64,8 @@ return packer.startup(function(use)
   use {
     "folke/which-key.nvim",
     config = function()
+      local presets = require("which-key.plugins.presets")
+      presets.operators["v"] = nil
       require("which-key").setup {}
     end
   }
@@ -86,7 +88,24 @@ return packer.startup(function(use)
       }
     end
   }
-  use "simrat39/symbols-outline.nvim" -- Outline tree of variables, fns, etc.
+  -- Smooth scrolling with certain scrolling commands
+  use {
+    "karb94/neoscroll.nvim",
+    config = function()
+      require("neoscroll").setup {}
+    end
+  }
+
+  use {
+    "NvChad/nvim-colorizer.lua",
+    config = function()
+      require("colorizer").setup()
+    end
+  }
+
+  use "mfussenegger/nvim-dap"
+  use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } }
+  --[[ use "simrat39/symbols-outline.nvim" -- Outline tree of variables, fns, etc. ]]
   -- TODO: Figure this plugin out its weird
   -- use {
   --   "nvim-neorg/neorg", -- Neovim org mode for documentation or note-taking
@@ -165,11 +184,15 @@ return packer.startup(function(use)
   use "neovim/nvim-lspconfig" -- LSP configurations
   --[[ use "williamboman/nvim-lsp-installer" -- simple to use language server installer ]]
   use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
-  use "tami5/lspsaga.nvim" -- LSP UI Improvements
+  use { "glepnir/lspsaga.nvim", branch = "main" } -- LSP UI Improvements
   use {
     "j-hui/fidget.nvim",
     config = function()
-      require("fidget").setup {}
+      require("fidget").setup {
+        fmt = {
+          max_width = 30
+        }
+      }
     end
   }
 
@@ -182,7 +205,7 @@ return packer.startup(function(use)
     "nvim-treesitter/nvim-treesitter", -- improved syntax highlighting
     run = ":TSUpdate",
   }
-  use { "nvim-treesitter/nvim-treesitter-context" } -- shows context of visible contents
+  -- use { "nvim-treesitter/nvim-treesitter-context" } -- shows context of visible contents
 
   -- Flutter --
   -- use "akinsho/flutter-tools.nvim"
@@ -204,8 +227,8 @@ return packer.startup(function(use)
 
   -- Databases
   -- TODO: Figure out why the UI for this is buggy
-  use { "tpope/vim-dadbod" }
-  use { "kristijanhusak/vim-dadbod-ui" }
+  -- use { "tpope/vim-dadbod" }
+  -- use { "kristijanhusak/vim-dadbod-ui" }
 
   -- Java
   use { "mfussenegger/nvim-jdtls", ft = { "java" } }
@@ -220,11 +243,6 @@ return packer.startup(function(use)
   }
 
   use {
-    "RRethy/vim-hexokinase", -- Show color swatch next to color value
-    run = 'make hexokinase'
-  }
-
-  use {
     "jose-elias-alvarez/nvim-lsp-ts-utils", -- Typescript utilities
     config = function()
       require("nvim-lsp-ts-utils").setup {}
@@ -233,14 +251,6 @@ return packer.startup(function(use)
 
   use "JoosepAlviste/nvim-ts-context-commentstring" -- JSX/TSX contextual commenting
   use "mattn/emmet-vim" -- Emmet support in (neo)vim
-
-  -- Smooth scrolling with certain scrolling commands
-  use {
-    "karb94/neoscroll.nvim",
-    config = function()
-      require("neoscroll").setup {}
-    end
-  }
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

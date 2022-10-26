@@ -28,8 +28,8 @@ wk.register({
     g = {
       name = "+git",
       p = { "<cmd>Gitsigns preview_hunk<cr>", "Preview Hunk" },
-      k = { "<cmd>Gitsigns prev_hunk<cr>", "Previous Hunk" },
-      j = { "<cmd>Gitsigns next_hunk<cr>", "Next Hunk" },
+      --[[ k = { "<cmd>Gitsigns prev_hunk<cr>", "Previous Hunk" }, ]]
+      --[[ j = { "<cmd>Gitsigns next_hunk<cr>", "Next Hunk" }, ]]
       r = { "<cmd>Gitsigns reset_hunk<cr>", "Reset Hunk" },
       b = { "<cmd>Gitsigns toggle_current_line_blame<cr>", "Toggle Blame" },
       d = { "<cmd>Gitsigns toggle_deleted<cr>", "View Deletions" },
@@ -71,35 +71,53 @@ wk.register({
     --[[ }, ]]
     --[[]]
 
-    -- General code commands
-    c = {
-      name = "+code",
-      a = { "<cmd>Lspsaga code_action<cr>", "Code Actions" },
-      e = { "<cmd>Lspsaga show_line_diagnostics<cr>", "Line Diagnostics" },
-      r = { "<cmd>Lspsaga rename<cr>", "Rename" },
-      h = { "<cmd>Lspsaga hover_doc<cr>", "Hover Doc" },
-      d = { "<cmd>Lspsaga preview_definition<cr>", "Preview Definition" },
-    },
+    --[[ -- General code commands ]]
+    --[[ c = { ]]
+    --[[   name = "+code", ]]
+    --[[   a = { "<cmd>Lspsaga code_action<cr>", "Code Actions" }, ]]
+    --[[   e = { "<cmd>Lspsaga show_line_diagnostics<cr>", "Line Diagnostics" }, ]]
+    --[[   r = { "<cmd>Lspsaga rename<cr>", "Rename" }, ]]
+    --[[   h = { "<cmd>Lspsaga hover_doc<cr>", "Hover Doc" }, ]]
+    --[[   d = { "<cmd>Lspsaga peek_definition<cr>", "Preview Definition" }, ]]
+    --[[   f = { "<cmd>Lspsaga lsp_finder<cr>", "Find Instances" }, ]]
+    --[[   o = { "<cmd>LSoutlineToggle<cr>", "Toggle Code Outline" } ]]
+    --[[ }, ]]
 
     -- Symbol Outline command
-    o = { "<cmd>SymbolsOutline<cr>", "Outline" },
+    o = { "<cmd>LSoutlineToggle<cr>", "Toggle Code Outline" },
 
     -- NvimTree command
     e = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
 
     -- Mason server managers
-    s = { "<cmd>Mason<cr>", "Servers" },
+    --[[ s = { "<cmd>Mason<cr>", "Servers" }, ]]
 
     p = { "<cmd>Format<cr>", "Prettify" },
 
-    d = {
-      name = "+databases",
+    s = {
+      name = "+sql",
       u = { "<cmd>DBUIToggle<cr>", "Toggle Database UI" },
       f = { "<cmd>DBUIFindBuffer<cr>", "Find Buffer" },
       r = { "<cmd>DBUIRenameBuffer<cr>", "Rename Buffer" },
       l = { "<cmd>DBUILastQueryInfo<cr>", "Last Query Info" }
+    },
+
+    d = {
+      name = "+dap",
+      o = { "<cmd>require'dapui'.toggle()<cr>", "Toggle DAP UI" },
+      b = { "<cmd>DapToggleBreakpoint<cr>", "Breakpoint" },
+      --[[ B = { "<cmd>lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<cr>", "Breakpoint Condition" }, ]]
+      --[[ c = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "Continue" }, ]]
+      --[[ b = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "Step Over" }, ]]
+      --[[ b = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "Step Into" }, ]]
+      --[[ b = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "Step Out" }, ]]
     }
   },
+
+  ["<F5>"] = { "<cmd>DapContinue<cr>", "Continue" },
+  ["<F10>"] = { "<cmd>DapStepOver<cr>", "Step Over" },
+  ["<F11>"] = { "<cmd>DapStepInto<cr>", "Step Into" },
+  ["<F12>"] = { "<cmd>DapStepOut<cr>", "Step Out" },
 
   -- Emmet
   ["<C-z>"] = {
@@ -125,27 +143,39 @@ wk.register({
   ["z"] = "+folds",
 
   -- General
-  ["g"] = {
+  g = {
     name = "+general",
-    ["b"] = {
+    a = { "<cmd>Lspsaga code_action<cr>", "Code Actions" },
+    d = { "<cmd>Lspsaga peek_definition<cr>", "Preview Definition" },
+    f = { "<cmd>Lspsaga lsp_finder<cr>", "Find Instances" },
+    r = { "<cmd>Lspsaga rename<cr>", "Rename" },
+
+    b = {
       name = "Block Comment",
       c = "Comment"
     },
 
-    ["c"] = {
+    c = {
       name = "Line Comment",
       c = "Comment Line",
       o = "Comment Below Line",
       O = "Comment Above Line",
       A = "Comment After Line",
-    }
+    },
   },
+
+  ["<S-k>"] = { "<cmd>Lspsaga hover_doc<cr>", "Hover Doc" },
+  ["<A-k>"] = { "<cmd>Lspsaga show_line_diagnostics<cr>", "Line Diagnostics" },
 
   -- Better window navigation
   ["<C-k>"] = { "<C-w>k", "Move Up a Window" },
   ["<C-j>"] = { "<C-w>j", "Move Down a Window" },
   ["<C-l>"] = { "<C-w>l", "Move Right a Window" },
   ["<C-h>"] = { "<C-w>h", "Move Left a Window" },
+
+  -- Hover scrolling
+  --[[ ["<Tab>"] = { "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>", "Move down hover docs" }, ]]
+  --[[ ["<S-Tab>"] = { "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>", "Move up hover docs" }, ]]
 
   -- Arrow window resizing
   ["<C-Up>"] = { ":resize +2<cr>", "Increase Window Height" },
@@ -154,10 +184,10 @@ wk.register({
   ["<C-Left>"] = { ":vertical resize -2<cr>", "Decrease Window Width" },
 
   -- Bufferline
-  ["<S-k>"] = { "<cmd>BufferLineCycleNext<cr>", "Next Buffer" },
-  ["<S-j>"] = { "<cmd>BufferLineCyclePrev<cr>", "Previous Buffer" },
-  ["<A-k>"] = { "<cmd>BufferLineMoveNext<cr>", "Move Buffer Right" },
-  ["<A-j>"] = { "<cmd>BufferLineMovePrev<cr>", "Move Buffer Left" },
+  ["<S-l>"] = { "<cmd>BufferLineCycleNext<cr>", "Next Buffer" },
+  ["<S-h>"] = { "<cmd>BufferLineCyclePrev<cr>", "Previous Buffer" },
+  ["<A-l>"] = { "<cmd>BufferLineMoveNext<cr>", "Move Buffer Right" },
+  ["<A-h>"] = { "<cmd>BufferLineMovePrev<cr>", "Move Buffer Left" },
   ["<C-x>"] = { "<cmd>Bdelete!<cr>", "Close Buffer" },
 
   -- Toggleterm
