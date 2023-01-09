@@ -14,6 +14,7 @@ local SYSTEM = "linux"
 
 local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
 local workspace_dir = WORKSPACE_PATH .. project_name
+--[[ local workspace_dir = vim.fn.getcwd() ]]
 
 local root_markers = { ".git", "mvnw", "gradlew", "pom.xml", "build.gradle" }
 local root_dir = require("jdtls.setup").find_root(root_markers)
@@ -24,6 +25,7 @@ end
 local extendedClientCapabilities = jdtls.extendedClientCapabilities
 extendedClientCapabilities.resolveAdditionalTextEditsSupport = true
 
+-- TODO: Gradle needs a Java version below 16 to work. Find a way to use that with jdtls
 local config = {
   cmd = {
     "java",
@@ -60,6 +62,11 @@ local config = {
       },
       configuration = {
         updateBuildConfiguration = "interactive",
+        --[[]]
+        --[[ runtimes = { ]]
+        --[[   name = "JavaSE-11", ]]
+        --[[   path = "/usr/lib/jvm/java-11-openjdk" ]]
+        --[[ } ]]
       },
       maven = {
         downloadSources = true,

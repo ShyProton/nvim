@@ -148,8 +148,18 @@ M.on_attach = function(client, bufnr)
 
   --[[ end ]]
 
-  -- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead ]]
-  vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.format()")
+  -- Autoformat
+  vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.format({bufnr = bufnr})")
+
+  -- Autosave
+  --[[ vim.cmd("au TextChanged,TextChangedI <buffer> if &readonly == 0 && filereadable(bufname('%')) | silent write | endif") ]]
+
+  local status_ok, ih = pcall(require, "inlay-hints");
+  if status_ok then
+    -- TODO: Find a way to immediately render type hints without editing the file first.
+    --[[ ih.render(); ]]
+    ih.on_attach(client, bufnr);
+  end
 
   lsp_keymaps(bufnr)
   lsp_highlight_document(client)

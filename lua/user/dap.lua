@@ -3,32 +3,27 @@ if not status_ok then
   return
 end
 
-dap.adapters.codelldb = {
-  type = 'server',
-  port = "${port}",
-
-  executable = {
-    command = '/home/shayanr/.local/share/nvim/mason/bin/codelldb',
-    args = { "--port", "${port}" },
-  },
+dap.adapters.lldb = {
+  type = "executable",
+  command = "rust-lldb",
+  name = "lldb"
 }
 
-dap.configurations.cpp = {
+dap.configurations.rust = {
   {
     name = "Launch file",
-    type = "codelldb",
+    type = "lldb",
     request = "launch",
-    program = function()
-      return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
-    end,
+    program = "${workspaceFolder}/target/debug/${workspaceFolderBasename}",
+    --[[ program = function() ]]
+    --[[   return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file') ]]
+    --[[ end, ]]
     cwd = '${workspaceFolder}',
-    stopOnEntry = true,
+    stopOnEntry = false,
+    --[[ sourceLanguages = { "rust" }, ]]
   },
 }
 
--- If you want to use this for Rust and C, add something like this:
-
-dap.configurations.c = dap.configurations.cpp
-dap.configurations.rust = dap.configurations.cpp
+dap.set_log_level('TRACE')
 
 require("dapui").setup()

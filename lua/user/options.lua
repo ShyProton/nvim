@@ -53,3 +53,5 @@ vim.g.leetcode_browser = "firefox"
 -- vim.opt.foldmethod = "manual"
 
 vim.opt.shortmess:append 'c'
+
+vim.g.hardtime_default_on = 1

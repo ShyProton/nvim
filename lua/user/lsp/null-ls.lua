@@ -28,7 +28,7 @@ null_ls.setup {
   debug = false,
   sources = {
     -- Python
-    --[[ formatting.black.with { extra_args = { '--fast' } }, ]]
+    formatting.black.with { extra_args = { '--fast' } },
     diagnostics.flake8,
 
     -- Dart

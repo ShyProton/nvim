@@ -27,7 +27,7 @@ wk.register({
     -- Hunk commands
     g = {
       name = "+git",
-      p = { "<cmd>Gitsigns preview_hunk<cr>", "Preview Hunk" },
+      p = { "<cmd>Gitsigns preview_hunk_inline<cr>", "Preview Hunk" },
       --[[ k = { "<cmd>Gitsigns prev_hunk<cr>", "Previous Hunk" }, ]]
       --[[ j = { "<cmd>Gitsigns next_hunk<cr>", "Next Hunk" }, ]]
       r = { "<cmd>Gitsigns reset_hunk<cr>", "Reset Hunk" },
@@ -84,7 +84,7 @@ wk.register({
     --[[ }, ]]
 
     -- Symbol Outline command
-    o = { "<cmd>LSoutlineToggle<cr>", "Toggle Code Outline" },
+    o = { "<cmd>LSoutlineToggle<cr>", "Code Outline" },
 
     -- NvimTree command
     e = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
@@ -111,6 +111,12 @@ wk.register({
       --[[ b = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "Step Over" }, ]]
       --[[ b = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "Step Into" }, ]]
       --[[ b = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "Step Out" }, ]]
+    },
+
+    m = {
+      name = "+misc",
+      m = { "<cmd>CellularAutomaton make_it_rain<cr>", "Make it rain" },
+      l = { "<cmd>CellularAutomaton game_of_life<cr>", "Game of life" }
     }
   },
 
@@ -188,12 +194,12 @@ wk.register({
   ["<S-h>"] = { "<cmd>BufferLineCyclePrev<cr>", "Previous Buffer" },
   ["<A-l>"] = { "<cmd>BufferLineMoveNext<cr>", "Move Buffer Right" },
   ["<A-h>"] = { "<cmd>BufferLineMovePrev<cr>", "Move Buffer Left" },
-  ["<C-x>"] = { "<cmd>Bdelete!<cr>", "Close Buffer" },
+  ["<C-q>"] = { "<cmd>Bdelete!<cr>", "Close Buffer" },
 
   -- Toggleterm
   ["<M-Enter>"] = { "<cmd>ToggleTermToggleAll<cr>", "Toggle Terminals" },
   ["<M-\\>"] = { "<cmd>exe v:count1 . \"ToggleTerm direction=float\"<cr>", "Floating Terminal" },
-  ["<M-]>"] = { "<cmd>exe v:count1 . \"ToggleTerm direction=vertical size=90\"<cr>", "Side Terminal" },
+  ["<M-]>"] = { "<cmd>exe v:count1 . \"ToggleTerm direction=vertical size=70\"<cr>", "Side Terminal" },
   ["<M-[>"] = { "<cmd>exe v:count1 . \"ToggleTerm direction=horizontal size=15\"<cr>", "Bottom Terminal" },
 }, normal)
 
@@ -269,7 +275,9 @@ wk.register({
 -- Insert keymaps
 wk.register({
   -- Making sure <C-[> is <esc>
-  ["<C-[>"] = { "<esc>", "esc" }
+  ["<C-[>"] = { "<esc>", "esc" },
+  --[[]]
+  --[[ ["kj"] = {"<esc>", "esc"} ]]
 }, insert)
 
 -- Terminal keymaps

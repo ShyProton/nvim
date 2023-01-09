@@ -61,6 +61,15 @@ return packer.startup(function(use)
   use "nathom/filetype.nvim" -- Improves startup time
   use "antoinemadec/FixCursorHold.nvim" -- Fixes cursorhold performance
   use "tpope/vim-surround" -- Easily change/add/delete parentheses, quotes...
+  use "takac/vim-hardtime" -- Punish the use of spamming singular movement keys
+  use {
+    "max397574/better-escape.nvim", -- Allows for better use of escaping in insert mode
+    config = function()
+      require("better_escape").setup {
+        mapping = {"kj"}
+      }
+    end,
+  }
   use {
     "folke/which-key.nvim",
     config = function()
@@ -89,12 +98,13 @@ return packer.startup(function(use)
     end
   }
   -- Smooth scrolling with certain scrolling commands
-  use {
-    "karb94/neoscroll.nvim",
-    config = function()
-      require("neoscroll").setup {}
-    end
-  }
+
+  --[[ use { ]]
+  --[[   "karb94/neoscroll.nvim", ]]
+  --[[   config = function() ]]
+  --[[     require("neoscroll").setup {} ]]
+  --[[   end ]]
+  --[[ } ]]
 
   use {
     "NvChad/nvim-colorizer.lua",
@@ -158,6 +168,7 @@ return packer.startup(function(use)
       }
     end
   } -- Discord rich presence
+  use "Eandrju/cellular-automaton.nvim"
   -- use {
   --   "rcarriga/nvim-notify", -- Better looking notifications
   --   config = function ()
@@ -222,7 +233,7 @@ return packer.startup(function(use)
   use {
     "luk400/vim-jukit",
     -- json is needed since .ipynb are formatted in json
-    ft = { "python" },
+    ft = { "python", "json" },
   }
 
   -- Databases
@@ -232,6 +243,29 @@ return packer.startup(function(use)
 
   -- Java
   use { "mfussenegger/nvim-jdtls", ft = { "java" } }
+
+  --[[ -- Rust ]]
+  --[[ use { "simrat39/inlay-hints.nvim", config = function() ]]
+  --[[   require("inlay-hints").setup({ ]]
+  --[[     hints = { ]]
+  --[[       parameter = { ]]
+  --[[         show = false ]]
+  --[[       } ]]
+  --[[     }, ]]
+  --[[     eol = { ]]
+  --[[       type = { ]]
+  --[[         format = function(hints) ]]
+  --[[           return string.format(" >> %s", hints) ]]
+  --[[         end ]]
+  --[[       }, ]]
+  --[[       parameter = { ]]
+  --[[         format = function(hints) ]]
+  --[[           return "" ]]
+  --[[         end ]]
+  --[[       } ]]
+  --[[     } ]]
+  --[[   }) ]]
+  --[[ end } ]]
 
   -- Web --
   -- TODO: Make these plugins only load with their respective languages
