@@ -61,12 +61,12 @@ return packer.startup(function(use)
   use "nathom/filetype.nvim" -- Improves startup time
   use "antoinemadec/FixCursorHold.nvim" -- Fixes cursorhold performance
   use "tpope/vim-surround" -- Easily change/add/delete parentheses, quotes...
-  use "takac/vim-hardtime" -- Punish the use of spamming singular movement keys
+  --[[ use "takac/vim-hardtime" -- Punish the use of spamming singular movement keys ]]
   use {
     "max397574/better-escape.nvim", -- Allows for better use of escaping in insert mode
     config = function()
       require("better_escape").setup {
-        mapping = {"kj"}
+        mapping = { "kj" }
       }
     end,
   }
