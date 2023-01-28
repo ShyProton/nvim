@@ -3,7 +3,7 @@ if not status_ok then
   return
 end
 
-lspsaga.init_lsp_saga({
+lspsaga.setup({
   --[[ use_saga_diagnostic_sign = false, ]]
   --[[ error_sign = "", ]]
   --[[ warn_sign = "", ]]
@@ -25,7 +25,14 @@ lspsaga.init_lsp_saga({
     jump_key = "<cr>"
   },
 
-  border_style = "rounded",
+  symbol_in_winbar = {
+    enable = false
+  },
+
+  ui = {
+    theme = "round",
+    border = "single"
+  }
 })
 
 --[[ lspsaga.setup { ]]
