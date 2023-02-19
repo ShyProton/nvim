@@ -55,3 +55,4 @@ vim.g.leetcode_browser = "firefox"
 vim.opt.shortmess:append 'c'
 
 vim.g.hardtime_default_on = 1
+--[[ vim.g.easyescape_chars = { j= 1, k= 1} ]]
